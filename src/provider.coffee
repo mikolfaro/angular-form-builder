@@ -216,7 +216,7 @@ angular.module 'builder.provider', []
                 </div>
                 <div class="modal-body text-center">
                   <p class="no-margins" ng-if="!elems.length"><b>Warning!</b><br>You are about to delete this element!</p>
-                  <p class="no-margins" ng-if="elems.length"><b>Warning!</b><br>The following elements are logically depenendent on the element you are trying to delete!</p>
+                  <p class="no-margins" ng-if="elems.length"><b>Warning!</b><br>The following elements are logically dependent on the element you are trying to delete!</p>
                   <ul class="list-group m-t-md" ng-if="elems.length">
                     <li class="list-group-item list-group-item-warning" ng-repeat="elem in elems">
                       {{elem.label}} 
