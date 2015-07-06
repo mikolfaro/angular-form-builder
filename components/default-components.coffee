@@ -129,23 +129,23 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Description</label>
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required</label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="requireConfirmation" />
-                                    Require Email Confirmation</label>
+
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="requireConfirmation" ng-model="requireConfirmation">
+                              <label for="requireConfirmation">Require Email Confirmation</label>
                             </div>
+
                             <div class="form-group" ng-if="validationOptions.length > 0">
                                 <label class='control-label'>Validation</label>
                                 <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
@@ -258,23 +258,22 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Description</label>
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required</label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="disableWeekends" />
-                                    Disable Weekends</label>
+
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="disableWeekends" ng-model="disableWeekends">
+                              <label for="disableWeekends">Disable Weekends</label>
                             </div>
+
                             <div class="form-group" ng-if="validationOptions.length > 0">
                                 <label class='control-label'>Validation</label>
                                 <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
@@ -412,18 +411,17 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Placeholder</label>
                                 <input type='text' ng-model="placeholder" class='form-control'/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required</label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
+
                             <div class="form-group" ng-if="validationOptions.length > 0">
                                 <label class='control-label'>Validation</label>
                                 <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
@@ -559,17 +557,15 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Placeholder</label>
                                 <input type='text' ng-model="placeholder" class='form-control'/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required</label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
@@ -685,18 +681,15 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Options</label>
                                 <textarea class="form-control" rows="3" ng-model="optionsText"/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required
-                                </label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
@@ -813,10 +806,9 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Options</label>
                                 <textarea class="form-control" rows="3" ng-model="optionsText"/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
@@ -944,18 +936,15 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Options</label>
                                 <textarea class="form-control" rows="3" ng-model="optionsText"/>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type='checkbox'  ng-model="readOnly" />
-                                    Read Only</label>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="read-only" ng-model="readOnly">
+                              <label for="read-only">Read Only</label>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                            <div class="checkbox m-t">
-                                <label>
-                                    <input type='checkbox'  ng-model="required" />
-                                    Required
-                                </label>
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="required" ng-model="required">
+                              <label for="required">Required</label>
                             </div>
                             <div class="form-group" ng-if="validationOptions.length > 0">
                                 <label class='control-label'>Validation</label>
@@ -1081,10 +1070,9 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                     <label class='control-label'>Description</label>
                                     <input type='text' ng-model="description" class='form-control'/>
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type='checkbox'  ng-model="readOnly" />
-                                        Read Only</label>
+                                <div class='checkbox icheck-label'>
+                                  <input type="checkbox" id="read-only" ng-model="readOnly">
+                                  <label for="read-only">Read Only</label>
                                 </div>
                                 <div class="form-group">
                                 <label class='control-label'>Placeholders</label>
@@ -1098,10 +1086,9 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                                <div class="checkbox m-t">
-                                    <label>
-                                        <input type='checkbox'  ng-model="required" />
-                                        Required</label>
+                                <div class='checkbox icheck-label m-t'>
+                                  <input type="checkbox" id="required" ng-model="required">
+                                  <label for="required">Required</label>
                                 </div>
                                 <div class="form-group" ng-if="validationOptions.length > 0">
                                     <label class='control-label'>Validation</label>
@@ -1306,17 +1293,15 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                         <label class='control-label'>Description</label>
                                         <input type='text' ng-model="description" class='form-control'/>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type='checkbox'  ng-model="readOnly" />
-                                            Read Only</label>
+                                    <div class='checkbox icheck-label'>
+                                      <input type="checkbox" id="read-only" ng-model="readOnly">
+                                      <label for="read-only">Read Only</label>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type='checkbox'  ng-model="required"/>
-                                            Required</label>
+                                    <div class='checkbox icheck-label m-t'>
+                                      <input type="checkbox" id="required" ng-model="required">
+                                      <label for="required">Required</label>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
