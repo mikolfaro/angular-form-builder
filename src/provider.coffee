@@ -80,6 +80,8 @@ angular.module 'builder.provider', []
             multiple: formObject.multiple ? component.multiple
             minLength: formObject.minLength ? component.minLength
             maxLength: formObject.maxLength ? component.maxLength
+            dateRangeStart: formObject.dateRangeStart ? component.dateRangeStart
+            dateRangeEnd: formObject.dateRangeEnd ? component.dateRangeEnd
             disableWeekends: formObject.disableWeekends ? component.disableWeekends
             readOnly: formObject.readOnly ? component.readOnly
             nextXDays: formObject.nextXDays ? component.nextXDays
@@ -219,7 +221,7 @@ angular.module 'builder.provider', []
                   <p class="no-margins" ng-if="elems.length"><b>Warning!</b><br>The following elements are logically dependent on the element you are trying to delete!</p>
                   <ul class="list-group m-t-md" ng-if="elems.length">
                     <li class="list-group-item list-group-item-warning" ng-repeat="elem in elems">
-                      {{elem.label}} 
+                      {{elem.label}}
                     </li>
                   </ul>
                 </div>

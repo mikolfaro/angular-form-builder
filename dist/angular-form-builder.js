@@ -448,7 +448,7 @@
         var component;
         copyObjectToScope(formObject, $scope);
         $scope.optionsText = formObject.options.join('\n');
-        $scope.$watch('[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, cprCountry, logic, category, pointRules, conversionType]', function() {
+        $scope.$watch('[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, cprCountry, logic, category, pointRules, conversionType]', function() {
           formObject.label = $scope.label;
           formObject.description = $scope.description;
           formObject.placeholder = $scope.placeholder;
@@ -458,6 +458,8 @@
           formObject.validation = $scope.validation;
           formObject.minLength = $scope.minLength;
           formObject.maxLength = $scope.maxLength;
+          formObject.dateRangeStart = $scope.dateRangeStart;
+          formObject.dateRangeEnd = $scope.dateRangeEnd;
           formObject.disableWeekends = $scope.disableWeekends;
           formObject.maxDate = $scope.maxDate;
           formObject.requireConfirmation = $scope.requireConfirmation;
@@ -508,6 +510,8 @@
             multiple: $scope.multiple,
             minLength: $scope.minLength,
             maxLength: $scope.maxLength,
+            dateRangeStart: $scope.dateRangeStart,
+            dateRangeEnd: $scope.dateRangeEnd,
             disableWeekends: $scope.disableWeekends,
             maxDate: $scope.maxDate,
             requireConfirmation: $scope.requireConfirmation,
@@ -540,6 +544,8 @@
           $scope.multiple = this.model.multiple;
           $scope.minLength = this.model.minLength;
           $scope.maxLength = this.model.maxLength;
+          $scope.dateRangeStart = this.model.dateRangeStart;
+          $scope.dateRangeEnd = this.model.dateRangeEnd;
           $scope.disableWeekends = this.model.disableWeekends;
           $scope.maxDate = this.model.maxDate;
           $scope.requireConfirmation = this.model.requireConfirmation;
@@ -1679,7 +1685,7 @@
       return result;
     };
     this.convertFormObject = function(name, formObject) {
-      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (formObject == null) {
         formObject = {};
       }
@@ -1701,19 +1707,21 @@
         multiple: (_ref8 = formObject.multiple) != null ? _ref8 : component.multiple,
         minLength: (_ref9 = formObject.minLength) != null ? _ref9 : component.minLength,
         maxLength: (_ref10 = formObject.maxLength) != null ? _ref10 : component.maxLength,
-        disableWeekends: (_ref11 = formObject.disableWeekends) != null ? _ref11 : component.disableWeekends,
-        readOnly: (_ref12 = formObject.readOnly) != null ? _ref12 : component.readOnly,
-        nextXDays: (_ref13 = formObject.nextXDays) != null ? _ref13 : component.nextXDays,
-        maxDate: (_ref14 = formObject.maxDate) != null ? _ref14 : component.maxDate,
-        requireConfirmation: (_ref15 = formObject.requireConfirmation) != null ? _ref15 : component.requireConfirmation,
-        minRange: (_ref16 = formObject.minRange) != null ? _ref16 : component.minRange,
-        maxRange: (_ref17 = formObject.maxRange) != null ? _ref17 : component.maxRange,
-        performCreditCheck: (_ref18 = formObject.performCreditCheck) != null ? _ref18 : component.performCreditCheck,
-        cprCountry: (_ref19 = formObject.cprCountry) != null ? _ref19 : component.cprCountry,
-        logic: (_ref20 = formObject.logic) != null ? _ref20 : component.logic,
-        category: (_ref21 = formObject.category) != null ? _ref21 : component.category,
-        pointRules: (_ref22 = formObject.pointRules) != null ? _ref22 : component.pointRules,
-        conversionType: (_ref23 = formObject.conversionType) != null ? _ref23 : component.conversionType
+        dateRangeStart: (_ref11 = formObject.dateRangeStart) != null ? _ref11 : component.dateRangeStart,
+        dateRangeEnd: (_ref12 = formObject.dateRangeEnd) != null ? _ref12 : component.dateRangeEnd,
+        disableWeekends: (_ref13 = formObject.disableWeekends) != null ? _ref13 : component.disableWeekends,
+        readOnly: (_ref14 = formObject.readOnly) != null ? _ref14 : component.readOnly,
+        nextXDays: (_ref15 = formObject.nextXDays) != null ? _ref15 : component.nextXDays,
+        maxDate: (_ref16 = formObject.maxDate) != null ? _ref16 : component.maxDate,
+        requireConfirmation: (_ref17 = formObject.requireConfirmation) != null ? _ref17 : component.requireConfirmation,
+        minRange: (_ref18 = formObject.minRange) != null ? _ref18 : component.minRange,
+        maxRange: (_ref19 = formObject.maxRange) != null ? _ref19 : component.maxRange,
+        performCreditCheck: (_ref20 = formObject.performCreditCheck) != null ? _ref20 : component.performCreditCheck,
+        cprCountry: (_ref21 = formObject.cprCountry) != null ? _ref21 : component.cprCountry,
+        logic: (_ref22 = formObject.logic) != null ? _ref22 : component.logic,
+        category: (_ref23 = formObject.category) != null ? _ref23 : component.category,
+        pointRules: (_ref24 = formObject.pointRules) != null ? _ref24 : component.pointRules,
+        conversionType: (_ref25 = formObject.conversionType) != null ? _ref25 : component.conversionType
       };
       return result;
     };
@@ -1874,7 +1882,7 @@
         }
         if (elems.length >= 0) {
           modal = $modal.open({
-            template: "<div class=\"inmodal\" auto-focus>\n  <form ng-submit=\"$close()\">\n    <div class=\"modal-header\">\n      <a type=\"button\" class=\"close x-close\" ng-click=\"$dismiss()\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></a>\n      <i class=\"fa fa-question modal-icon\"></i>\n      <h4 class=\"modal-title\">Delete Component?</h4>\n    </div>\n    <div class=\"modal-body text-center\">\n      <p class=\"no-margins\" ng-if=\"!elems.length\"><b>Warning!</b><br>You are about to delete this element!</p>\n      <p class=\"no-margins\" ng-if=\"elems.length\"><b>Warning!</b><br>The following elements are logically dependent on the element you are trying to delete!</p>\n      <ul class=\"list-group m-t-md\" ng-if=\"elems.length\">\n        <li class=\"list-group-item list-group-item-warning\" ng-repeat=\"elem in elems\">\n          {{elem.label}} \n        </li>\n      </ul>\n    </div>\n    <div class=\"modal-footer\">\n      <btn class=\"btn btn-default pull-left\" ng-click=\"$dismiss()\">Cancel</btn>\n      <input type=\"submit\" class=\"btn btn-primary pull-right\" value=\"OK\"></input>\n    </div>\n  </form>\n</div>",
+            template: "<div class=\"inmodal\" auto-focus>\n  <form ng-submit=\"$close()\">\n    <div class=\"modal-header\">\n      <a type=\"button\" class=\"close x-close\" ng-click=\"$dismiss()\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></a>\n      <i class=\"fa fa-question modal-icon\"></i>\n      <h4 class=\"modal-title\">Delete Component?</h4>\n    </div>\n    <div class=\"modal-body text-center\">\n      <p class=\"no-margins\" ng-if=\"!elems.length\"><b>Warning!</b><br>You are about to delete this element!</p>\n      <p class=\"no-margins\" ng-if=\"elems.length\"><b>Warning!</b><br>The following elements are logically dependent on the element you are trying to delete!</p>\n      <ul class=\"list-group m-t-md\" ng-if=\"elems.length\">\n        <li class=\"list-group-item list-group-item-warning\" ng-repeat=\"elem in elems\">\n          {{elem.label}}\n        </li>\n      </ul>\n    </div>\n    <div class=\"modal-footer\">\n      <btn class=\"btn btn-default pull-left\" ng-click=\"$dismiss()\">Cancel</btn>\n      <input type=\"submit\" class=\"btn btn-primary pull-right\" value=\"OK\"></input>\n    </div>\n  </form>\n</div>",
             controller: function($scope, $modal) {
               return $scope.elems = elems;
             },
