@@ -713,33 +713,48 @@
     '$injector', function($injector) {
       return {
         restrict: 'E',
-        template: "<p class=\"input-group\">\n  <input type=\"text\" class=\"form-control\" max-date=\"max\" datepicker-popup=\"{{format}}\" ng-model=\"inputText\" is-open=\"opened\" min-date=\"minDate\" max-date=\"'2015-06-22'\" datepicker-options=\"dateOptions\" date-disabled=\"disabled(date, mode)\" close-text=\"Close\"  validator-required=\"{{required}}\" validator-group=\"{{required}}\" id=\"{{formName+index}}\" disabled/>\n  <span class=\"input-group-btn\">\n    <button ng-disabled=\"readOnly\" type=\"button\" class=\"btn btn-default\" ng-click=\"open($event)\"><i class=\"glyphicon glyphicon-calendar\"></i></button>\n  </span>\n</p>",
+        template: "<p class=\"input-group\">\n  <input type=\"text\" class=\"form-control\" max-date=\"maxDate\" datepicker-popup=\"{{format}}\" ng-model=\"inputText\" is-open=\"opened\" min-date=\"minDate\" datepicker-options=\"dateOptions\" date-disabled=\"disabled(date, mode)\" close-text=\"Close\"  validator-required=\"{{required}}\" validator-group=\"{{required}}\" id=\"{{formName+index}}\" disabled/>\n  <span class=\"input-group-btn\">\n    <button ng-disabled=\"readOnly\" type=\"button\" class=\"btn btn-default\" ng-click=\"open($event)\"><i class=\"glyphicon glyphicon-calendar\"></i></button>\n  </span>\n</p>",
         link: function(scope, element, attrs) {
+          var extendPastWeekend;
           scope.inputText = '';
           scope.open = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
             return scope.opened = true;
           };
-          scope.$watch('maxDate', function() {
-            return scope.max = scope.maxDate;
-          });
-          scope.$watch('nextXDays', function() {
-            var next, string, today;
-            today = new Date();
-            next = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate() + scope.nextXDays);
-            string = next.getFullYear().toString() + '-' + ('0' + next.getMonth()).slice(-2) + '-' + ('0' + next.getDate()).slice(-2);
-            return scope.maxDate = string;
-          });
-          return scope.$watch('disableWeekends', function() {
-            if (scope.disableWeekends) {
-              return scope.disabled = function(date, mode) {
-                return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-              };
-            } else {
-              return scope.disabled = function(date, mode) {};
+          extendPastWeekend = function(from, daysOffset) {
+            var count, dayInRange, i, _i;
+            dayInRange = moment();
+            count = 0;
+            for (i = _i = 0; 0 <= daysOffset ? _i <= daysOffset : _i >= daysOffset; i = 0 <= daysOffset ? ++_i : --_i) {
+              if (dayInRange.isoWeekday() === 6 || dayInRange.isoWeekday() === 7) {
+                count++;
+              }
+              dayInRange.add(1, 'days');
             }
-          });
+            return moment(from).add(count, 'days').format('YYYY-MM-DD');
+          };
+          if (scope.dateRangeStart) {
+            scope.minDate = moment().add(scope.dateRangeStart, 'days').format('YYYY-MM-DD');
+          } else {
+            scope.minDate = moment().format('YYYY-MM-DD');
+          }
+          if (scope.dateRangeEnd) {
+            scope.maxDate = moment().add(scope.dateRangeEnd, 'days').format('YYYY-MM-DD');
+          }
+          if (scope.disableWeekends) {
+            if (scope.dateRangeStart) {
+              scope.minDate = extendPastWeekend(scope.minDate, scope.dateRangeStart);
+            }
+            if (scope.dateRangeEnd) {
+              scope.maxDate = extendPastWeekend(scope.maxDate, scope.dateRangeEnd);
+            }
+            return scope.disabled = function(date, mode) {
+              return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+            };
+          } else {
+            return scope.disabled = function(date, mode) {};
+          }
         }
       };
     }

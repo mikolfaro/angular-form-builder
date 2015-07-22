@@ -70,7 +70,7 @@ angular.module 'builder.directive', [
     template:
         """
         <p class="input-group">
-          <input type="text" class="form-control" max-date="max" datepicker-popup="{{format}}" ng-model="inputText" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"  validator-required="{{required}}" validator-group="{{required}}" id="{{formName+index}}" disabled/>
+          <input type="text" class="form-control" max-date="maxDate" datepicker-popup="{{format}}" ng-model="inputText" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"  validator-required="{{required}}" validator-group="{{required}}" id="{{formName+index}}" disabled/>
           <span class="input-group-btn">
             <button ng-disabled="readOnly" type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -85,25 +85,32 @@ angular.module 'builder.directive', [
             $event.stopPropagation()
             scope.opened = yes
 
-        scope.$watch('maxDate', ->
-            scope.max = scope.maxDate
-            )
+        extendPastWeekend = (from, daysOffset) ->
+            dayInRange = moment();
+            count = 0;
+            for i in [0..daysOffset]
+                if dayInRange.isoWeekday() == 6 || dayInRange.isoWeekday() == 7
+                    count++;
+                dayInRange.add(1, 'days');
+            moment(from).add(count, 'days').format('YYYY-MM-DD')
 
-        scope.$watch('nextXDays', ->
-            today = new Date()
-            next = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate() + scope.nextXDays)
-            string = next.getFullYear().toString() + '-' + ('0' + next.getMonth()).slice(-2) + '-' + ('0' + next.getDate()).slice(-2)
-            scope.maxDate = string
-            )
+        if scope.dateRangeStart
+            scope.minDate = moment().add(scope.dateRangeStart, 'days').format('YYYY-MM-DD')
+        else
+            scope.minDate = moment().format('YYYY-MM-DD')
 
-        scope.$watch('disableWeekends', ->
-            if scope.disableWeekends
-                scope.disabled = (date, mode) ->
-                    mode is 'day' && ( date.getDay() is 0 || date.getDay() is 6 )
-            else
-                scope.disabled = (date, mode) ->
-            )
+        if scope.dateRangeEnd
+            scope.maxDate = moment().add(scope.dateRangeEnd, 'days').format('YYYY-MM-DD')
 
+        if scope.disableWeekends
+            if scope.dateRangeStart
+                scope.minDate = extendPastWeekend(scope.minDate, scope.dateRangeStart);
+            if scope.dateRangeEnd
+                scope.maxDate = extendPastWeekend(scope.maxDate, scope.dateRangeEnd);
+            scope.disabled = (date, mode) ->
+                mode is 'day' && ( date.getDay() is 0 || date.getDay() is 6 )
+        else
+            scope.disabled = (date, mode) ->
 ]
 
 # ----------------------------------------
