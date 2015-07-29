@@ -181,7 +181,7 @@ angular.module 'builder.controller', ['builder.provider']
 
         $scope.optionsText = formObject.options.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, cprCountry, logic, category, pointRules, conversionType]', ->
+        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, cprCountry, logic, category, pointRules, conversionType]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
             formObject.placeholder = $scope.placeholder
@@ -191,6 +191,8 @@ angular.module 'builder.controller', ['builder.provider']
             formObject.validation = $scope.validation
             formObject.minLength = $scope.minLength
             formObject.maxLength = $scope.maxLength
+            formObject.dateRangeStart = $scope.dateRangeStart
+            formObject.dateRangeEnd = $scope.dateRangeEnd
             formObject.disableWeekends = $scope.disableWeekends
             formObject.maxDate = $scope.maxDate
             formObject.requireConfirmation = $scope.requireConfirmation
@@ -230,6 +232,8 @@ angular.module 'builder.controller', ['builder.provider']
                 multiple: $scope.multiple
                 minLength: $scope.minLength
                 maxLength: $scope.maxLength
+                dateRangeStart: $scope.dateRangeStart
+                dateRangeEnd: $scope.dateRangeEnd
                 disableWeekends: $scope.disableWeekends
                 maxDate: $scope.maxDate
                 requireConfirmation: $scope.requireConfirmation
@@ -257,6 +261,8 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.multiple = @model.multiple
             $scope.minLength = @model.minLength
             $scope.maxLength = @model.maxLength
+            $scope.dateRangeStart = @model.dateRangeStart
+            $scope.dateRangeEnd = @model.dateRangeEnd
             $scope.disableWeekends = @model.disableWeekends
             $scope.maxDate = @model.maxDate
             $scope.requireConfirmation = @model.requireConfirmation
