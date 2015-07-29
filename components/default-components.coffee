@@ -278,16 +278,26 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Validation</label>
                                 <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group m-t">
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                        Date is in next
+                                    <p class="col-sm-12">
+                                        <strong>Enable Selection</strong>
+                                    </p>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">From</span>
+                                            <select class="form-control" ng-model="dateRangeStart" ng-options="value for value in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]">
+                                                <option value="">---</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-7">
-                                        <select class="form-control" ng-model="nextXDays" ng-options="value for value in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"></select>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        days
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">To</span>
+                                            <select class="form-control" ng-model="dateRangeEnd" ng-options="value for value in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]">
+                                                <option value="">---</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
