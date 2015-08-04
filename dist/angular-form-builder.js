@@ -52,6 +52,9 @@
               value: 'not_eq',
               label: 'Does not equal'
             }, {
+              value: 'matches',
+              label: 'Matches'
+            }, {
               value: 'does_not_match',
               label: 'Does not match'
             }, {
@@ -72,12 +75,6 @@
             }, {
               value: 'gteq',
               label: 'Greater than or equal to'
-            }, {
-              value: 'null',
-              label: 'Empty'
-            }, {
-              valu: 'not_null',
-              label: 'Not empty'
             }
           ];
           break;
@@ -90,6 +87,9 @@
               value: 'not_eq',
               label: 'Does not equal'
             }, {
+              value: 'matches',
+              label: 'Matches'
+            }, {
               value: 'does_not_match',
               label: 'Does not match'
             }, {
@@ -114,7 +114,7 @@
               value: 'null',
               label: 'Empty'
             }, {
-              valu: 'not_null',
+              value: 'not_null',
               label: 'Not empty'
             }
           ];
