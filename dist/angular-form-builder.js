@@ -128,12 +128,6 @@
               value: 'not_eq',
               label: 'Does not equal'
             }, {
-              value: 'in',
-              label: 'In'
-            }, {
-              value: 'not_in',
-              label: 'Not in'
-            }, {
               value: 'null',
               label: 'Empty'
             }, {

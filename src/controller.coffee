@@ -37,7 +37,7 @@ angular.module 'builder.controller', ['builder.provider']
       when 'select'
         $scope.predicates = [{value: 'eq',label: 'Equals'},{value: 'not_eq',label: 'Does not equal'},{value: 'matches',label: 'Matches'},{value: 'does_not_match',label: 'Does not match'},{value: 'contains',label: 'Contains'},{value: 'does_not_contain',label: 'Does not contain'},{value: 'lt',label: 'Less than'},{value: 'lteq',label: 'Less than or equal to'},{value: 'gt',label: 'Greater than'},{value: 'gteq',label: 'Greater than or equal to'},{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
       when 'product'
-        $scope.predicates = [{value: 'eq',label: 'Equals'},{value: 'not_eq',label: 'Does not equal'},{value: 'in',label: 'In'},{value: 'not_in',label: 'Not in'},{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
+        $scope.predicates = [{value: 'eq',label: 'Equals'},{value: 'not_eq',label: 'Does not equal'},{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
       when 'email'
         $scope.predicates = [{value: 'eq',label: 'Equals'},{value: 'not_eq',label: 'Does not equal'},{value: 'matches',label: 'Matches'},{value: 'does_not_match',label: 'Does not match'},{value: 'contains',label: 'Contains'},{value: 'does_not_contain',label: 'Does not contain'},{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
       when 'area'
