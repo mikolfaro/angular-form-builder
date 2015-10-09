@@ -309,7 +309,35 @@
             }
           ];
           break;
-        case 'cpr' || 'lookupPhone' || 'lookupBday':
+        case 'cpr':
+          $scope.predicates = [
+            {
+              value: 'null',
+              label: 'Empty'
+            }, {
+              value: 'not_null',
+              label: 'Not empty'
+            }, {
+              value: 'custom_rule',
+              label: 'Custom Rule'
+            }
+          ];
+          break;
+        case 'lookupPhone':
+          $scope.predicates = [
+            {
+              value: 'null',
+              label: 'Empty'
+            }, {
+              value: 'not_null',
+              label: 'Not empty'
+            }, {
+              value: 'custom_rule',
+              label: 'Custom Rule'
+            }
+          ];
+          break;
+        case 'lookupBday':
           $scope.predicates = [
             {
               value: 'null',
@@ -700,6 +728,9 @@
           break;
         case 'not_null':
           input = 'is Not Empty';
+          break;
+        case 'custom_rule':
+          input = 'Custom rule';
           break;
         case 'null':
           input = 'is Empty';

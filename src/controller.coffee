@@ -52,7 +52,11 @@ angular.module 'builder.controller', ['builder.provider']
         $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
       when 'upload'
         $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
-      when 'cpr' or 'lookupPhone' or 'lookupBday'
+      when 'cpr'
+        $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'},{value: 'custom_rule',label: 'Custom Rule'}]
+      when 'lookupPhone'
+        $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'},{value: 'custom_rule',label: 'Custom Rule'}]
+      when 'lookupBday'
         $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'},{value: 'custom_rule',label: 'Custom Rule'}]
       when 'address'
         $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
