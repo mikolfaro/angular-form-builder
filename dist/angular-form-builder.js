@@ -309,7 +309,7 @@
             }
           ];
           break;
-        case 'cpr':
+        case 'cpr' || 'lookupPhone' || 'lookupBday':
           $scope.predicates = [
             {
               value: 'null',
@@ -317,6 +317,9 @@
             }, {
               value: 'not_null',
               label: 'Not empty'
+            }, {
+              value: 'custom_rule',
+              label: 'Custom Rule'
             }
           ];
           break;
