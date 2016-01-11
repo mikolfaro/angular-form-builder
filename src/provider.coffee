@@ -90,6 +90,7 @@ angular.module 'builder.provider', []
             minRange: formObject.minRange ? component.minRange
             maxRange: formObject.maxRange ? component.maxRange
             performCreditCheck: formObject.performCreditCheck ? component.performCreditCheck
+            performMeterLookup: formObject.performMeterLookup ? component.performMeterLookup
             cprCountry: formObject.cprCountry ? component.cprCountry
             logic: formObject.logic ? component.logic
             category: formObject.category ? component.category
