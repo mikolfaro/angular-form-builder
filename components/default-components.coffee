@@ -652,8 +652,8 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                 <div class="col-sm-10">
                     <input type='hidden' ng-model="inputText" validator-required="{{required}}" validator-group="{{formName}}"/>
                     <div class='checkbox icheck-label' ng-repeat="item in options track by $index">
-                      <input id="{{formName+index+$index | nospace}}" ng-model="inputArray[$index]" ng-value='item' ng-disabled="readOnly" type="checkbox" checked="">
-                      <label for="{{formName+index+$index | nospace}}">{{item}}</label>
+                      <input id="{{formName+index+'_'+$index | nospace}}" ng-model="inputArray[$index]" ng-value='item' ng-disabled="readOnly" type="checkbox" checked="">
+                      <label for="{{formName+index+'_'+$index | nospace}}">{{item}}</label>
                     </div>
                 </div>
                 <div class="col-sm-10 col-sm-offset-2">
@@ -776,8 +776,8 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                 <div class="col-sm-10">
                     <div class='radio icheck-label' ng-repeat="item in options track by $index">
 
-                        <input id="{{formName+index+$index | nospace}}" type="radio" ng-disabled="readOnly" name='{{formName+index}}' ng-model="$parent.inputText" validator-group="{{formName}}" ng-value='item'>
-                        <label for="{{formName+index+$index | nospace}}">{{item}}</label>
+                        <input id="{{formName+index+'_'+$index | nospace}}" type="radio" ng-disabled="readOnly" name='{{formName+index}}' ng-model="$parent.inputText" validator-group="{{formName}}" ng-value='item'>
+                        <label for="{{formName+index+'_'+$index | nospace}}">{{item}}</label>
 
                     </div>
                 </div>
