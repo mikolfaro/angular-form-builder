@@ -185,7 +185,7 @@ angular.module 'builder.controller', ['builder.provider']
 
         $scope.optionsText = formObject.options.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, cprCountry, logic, category, pointRules, conversionType]', ->
+        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, performMeterLookup, cprCountry, logic, category, pointRules, conversionType]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
             formObject.placeholder = $scope.placeholder
@@ -205,6 +205,7 @@ angular.module 'builder.controller', ['builder.provider']
             formObject.maxRange = $scope.maxRange
             formObject.nextXDays = $scope.nextXDays
             formObject.performCreditCheck = $scope.performCreditCheck
+            formObject.performMeterLookup = $scope.performMeterLookup
             formObject.cprCountry = $scope.cprCountry
             formObject.logic = $scope.logic
             formObject.category = $scope.category
@@ -246,6 +247,7 @@ angular.module 'builder.controller', ['builder.provider']
                 maxRange: $scope.maxRange
                 nextXDays: $scope.nextXDays
                 performCreditCheck: $scope.performCreditCheck
+                performMeterLookup: $scope.performMeterLookup
                 cprCountry: $scope.cprCountry
                 logic: $scope.logic
                 category: $scope.category
@@ -275,6 +277,7 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.maxRange = @model.maxRange
             $scope.nextXDays = @model.nextXDays
             $scope.performCreditCheck = @model.performCreditCheck
+            $scope.performMeterLookup = @model.performMeterLookup
             $scope.cprCountry = @model.cprCountry
             $scope.logic = @model.logic
             $scope.category = @model.category
