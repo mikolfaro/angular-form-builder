@@ -706,6 +706,9 @@
         case 'not_null':
           input = 'is Not Empty';
           break;
+        case 'custom_rule':
+          input = 'Custom rule';
+          break;
         case 'null':
           input = 'is Empty';
       }

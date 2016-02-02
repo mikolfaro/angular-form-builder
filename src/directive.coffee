@@ -58,6 +58,8 @@ angular.module 'builder.directive', [
         input = 'Not in'
       when 'not_null'
         input = 'is Not Empty'
+      when 'custom_rule'
+        input = 'Custom rule'
       when 'null'
         input = 'is Empty'
     return input
