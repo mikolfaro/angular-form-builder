@@ -309,7 +309,9 @@
             }
           ];
           break;
-        case 'cpr' || 'lookupPhone' || 'lookupBday':
+        case 'cpr':
+        case 'lookupPhone':
+        case 'lookupBday':
           $scope.predicates = [
             {
               value: 'null',
