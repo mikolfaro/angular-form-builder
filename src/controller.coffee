@@ -57,19 +57,6 @@ angular.module 'builder.controller', ['builder.provider']
       when 'address'
         $scope.predicates = [{value: 'null',label: 'Empty'},{value: 'not_null',label: 'Not empty'}]
 
-    $scope.addRule = ->
-      if !$scope.newRule.predicate? or !$scope.newRule.points or (!$scope.newRule.value? and $scope.newRule.predicate isnt 'null' and $scope.newRule.predicate isnt 'not_null')
-          $scope.rulesErrorMessage = 'Please update all fields.'
-      else
-        $scope.rulesErrorMessage = ''
-        if (angular.isDate($scope.newRule.value))
-          $scope.newRule.value = $filter('date')($scope.newRule.value, 'dd-MM-yyyy')
-        $scope.formObject.pointRules.push $scope.newRule
-        $scope.newRule = {}
-
-    $scope.removeRule = (rule) ->
-      $scope.formObject.pointRules.splice($scope.formObject.pointRules.indexOf(rule),1)
-
     if !$scope.formObject.logic?
       $scope.formObject.logic = {
         action: 'Hide'
@@ -124,11 +111,6 @@ angular.module 'builder.controller', ['builder.provider']
     $scope.save = (text) ->
       $scope.placeholder = text
       $scope.modalInstance.close()
-
-    $scope.openPoints = ($event) ->
-      $event.preventDefault()
-      $event.stopPropagation()
-      $scope.openedPoints = yes
 
     $scope.resetLogic = () ->
       $scope.formObject.logic = {

@@ -336,21 +336,6 @@
             }
           ];
       }
-      $scope.addRule = function() {
-        if (($scope.newRule.predicate == null) || !$scope.newRule.points || (($scope.newRule.value == null) && $scope.newRule.predicate !== 'null' && $scope.newRule.predicate !== 'not_null')) {
-          return $scope.rulesErrorMessage = 'Please update all fields.';
-        } else {
-          $scope.rulesErrorMessage = '';
-          if (angular.isDate($scope.newRule.value)) {
-            $scope.newRule.value = $filter('date')($scope.newRule.value, 'dd-MM-yyyy');
-          }
-          $scope.formObject.pointRules.push($scope.newRule);
-          return $scope.newRule = {};
-        }
-      };
-      $scope.removeRule = function(rule) {
-        return $scope.formObject.pointRules.splice($scope.formObject.pointRules.indexOf(rule), 1);
-      };
       if ($scope.formObject.logic == null) {
         $scope.formObject.logic = {
           action: 'Hide'
@@ -407,11 +392,6 @@
       $scope.save = function(text) {
         $scope.placeholder = text;
         return $scope.modalInstance.close();
-      };
-      $scope.openPoints = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        return $scope.openedPoints = true;
       };
       $scope.resetLogic = function() {
         return $scope.formObject.logic = {
