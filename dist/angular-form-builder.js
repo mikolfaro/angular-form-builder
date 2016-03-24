@@ -1703,7 +1703,7 @@
       return result;
     };
     this.convertFormObject = function(name, formObject) {
-      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (formObject == null) {
         formObject = {};
       }
@@ -1735,11 +1735,12 @@
         minRange: (_ref18 = formObject.minRange) != null ? _ref18 : component.minRange,
         maxRange: (_ref19 = formObject.maxRange) != null ? _ref19 : component.maxRange,
         performCreditCheck: (_ref20 = formObject.performCreditCheck) != null ? _ref20 : component.performCreditCheck,
-        cprCountry: (_ref21 = formObject.cprCountry) != null ? _ref21 : component.cprCountry,
-        logic: (_ref22 = formObject.logic) != null ? _ref22 : component.logic,
-        category: (_ref23 = formObject.category) != null ? _ref23 : component.category,
-        pointRules: (_ref24 = formObject.pointRules) != null ? _ref24 : component.pointRules,
-        conversionType: (_ref25 = formObject.conversionType) != null ? _ref25 : component.conversionType
+        performMeterLookup: (_ref21 = formObject.performMeterLookup) != null ? _ref21 : component.performMeterLookup,
+        cprCountry: (_ref22 = formObject.cprCountry) != null ? _ref22 : component.cprCountry,
+        logic: (_ref23 = formObject.logic) != null ? _ref23 : component.logic,
+        category: (_ref24 = formObject.category) != null ? _ref24 : component.category,
+        pointRules: (_ref25 = formObject.pointRules) != null ? _ref25 : component.pointRules,
+        conversionType: (_ref26 = formObject.conversionType) != null ? _ref26 : component.conversionType
       };
       return result;
     };
