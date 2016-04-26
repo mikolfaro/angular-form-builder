@@ -181,7 +181,7 @@ angular.module 'builder.controller', ['builder.provider']
 
         $scope.optionsText = formObject.options.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, performMeterLookup, cprCountry, logic, category, pointRules, conversionType]', ->
+        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
             formObject.placeholder = $scope.placeholder
@@ -207,6 +207,8 @@ angular.module 'builder.controller', ['builder.provider']
             formObject.category = $scope.category
             formObject.pointRules = $scope.pointRules
             formObject.conversionType = $scope.conversionType
+            formObject.searchScope = $scope.searchScope
+            formObject.searchPeriod = $scope.searchPeriod
 
         , yes
 
@@ -249,6 +251,8 @@ angular.module 'builder.controller', ['builder.provider']
                 category: $scope.category
                 pointRules: $scope.pointRules
                 conversionType: $scope.conversionType
+                searchScope: $scope.searchScope
+                searchPeriod: $scope.searchPeriod
         rollback: ->
             ###
             Rollback input value.
@@ -279,6 +283,8 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.category = @model.category
             $scope.pointRules = @model.pointRules
             $scope.conversionType = @model.conversionType
+            $scope.searchScope = @model.searchScope
+            $scope.searchPeriod = @model.searchPeriod
 ]
 
 # ----------------------------------------
