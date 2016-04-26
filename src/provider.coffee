@@ -94,8 +94,9 @@ angular.module 'builder.provider', []
             cprCountry: formObject.cprCountry ? component.cprCountry
             logic: formObject.logic ? component.logic
             category: formObject.category ? component.category
-            pointRules: formObject.pointRules ? component.pointRules
             conversionType: formObject.conversionType ? component.conversionType
+            searchScope: formObject.searchScope ? component.searchScope
+            searchPeriod: formObject.searchPeriod ? component.searchPeriod
         result
 
     @reindexFormObject = (name) =>
