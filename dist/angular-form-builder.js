@@ -448,7 +448,7 @@
         var component;
         copyObjectToScope(formObject, $scope);
         $scope.optionsText = formObject.options.join('\n');
-        $scope.$watch('[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', function() {
+        $scope.$watch('[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', function() {
           formObject.label = $scope.label;
           formObject.description = $scope.description;
           formObject.placeholder = $scope.placeholder;
@@ -468,6 +468,7 @@
           formObject.maxRange = $scope.maxRange;
           formObject.nextXDays = $scope.nextXDays;
           formObject.performCreditCheck = $scope.performCreditCheck;
+          formObject.creditCheckRequired = $scope.creditCheckRequired;
           formObject.performMeterLookup = $scope.performMeterLookup;
           formObject.cprCountry = $scope.cprCountry;
           formObject.logic = $scope.logic;
@@ -523,6 +524,7 @@
             maxRange: $scope.maxRange,
             nextXDays: $scope.nextXDays,
             performCreditCheck: $scope.performCreditCheck,
+            creditCheckRequired: $scope.creditCheckRequired,
             performMeterLookup: $scope.performMeterLookup,
             cprCountry: $scope.cprCountry,
             logic: $scope.logic,
@@ -560,6 +562,7 @@
           $scope.maxRange = this.model.maxRange;
           $scope.nextXDays = this.model.nextXDays;
           $scope.performCreditCheck = this.model.performCreditCheck;
+          $scope.creditCheckRequired = this.model.creditCheckRequired;
           $scope.performMeterLookup = this.model.performMeterLookup;
           $scope.cprCountry = this.model.cprCountry;
           $scope.logic = this.model.logic;
@@ -1709,7 +1712,7 @@
       return result;
     };
     this.convertFormObject = function(name, formObject) {
-      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (formObject == null) {
         formObject = {};
       }
@@ -1741,13 +1744,14 @@
         minRange: (_ref18 = formObject.minRange) != null ? _ref18 : component.minRange,
         maxRange: (_ref19 = formObject.maxRange) != null ? _ref19 : component.maxRange,
         performCreditCheck: (_ref20 = formObject.performCreditCheck) != null ? _ref20 : component.performCreditCheck,
-        performMeterLookup: (_ref21 = formObject.performMeterLookup) != null ? _ref21 : component.performMeterLookup,
-        cprCountry: (_ref22 = formObject.cprCountry) != null ? _ref22 : component.cprCountry,
-        logic: (_ref23 = formObject.logic) != null ? _ref23 : component.logic,
-        category: (_ref24 = formObject.category) != null ? _ref24 : component.category,
-        conversionType: (_ref25 = formObject.conversionType) != null ? _ref25 : component.conversionType,
-        searchScope: (_ref26 = formObject.searchScope) != null ? _ref26 : component.searchScope,
-        searchPeriod: (_ref27 = formObject.searchPeriod) != null ? _ref27 : component.searchPeriod
+        creditCheckRequired: (_ref21 = formObject.creditCheckRequired) != null ? _ref21 : component.creditCheckRequired,
+        performMeterLookup: (_ref22 = formObject.performMeterLookup) != null ? _ref22 : component.performMeterLookup,
+        cprCountry: (_ref23 = formObject.cprCountry) != null ? _ref23 : component.cprCountry,
+        logic: (_ref24 = formObject.logic) != null ? _ref24 : component.logic,
+        category: (_ref25 = formObject.category) != null ? _ref25 : component.category,
+        conversionType: (_ref26 = formObject.conversionType) != null ? _ref26 : component.conversionType,
+        searchScope: (_ref27 = formObject.searchScope) != null ? _ref27 : component.searchScope,
+        searchPeriod: (_ref28 = formObject.searchPeriod) != null ? _ref28 : component.searchPeriod
       };
       return result;
     };

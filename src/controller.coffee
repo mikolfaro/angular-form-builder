@@ -181,7 +181,7 @@ angular.module 'builder.controller', ['builder.provider']
 
         $scope.optionsText = formObject.options.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', ->
+        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
             formObject.placeholder = $scope.placeholder
@@ -201,6 +201,7 @@ angular.module 'builder.controller', ['builder.provider']
             formObject.maxRange = $scope.maxRange
             formObject.nextXDays = $scope.nextXDays
             formObject.performCreditCheck = $scope.performCreditCheck
+            formObject.creditCheckRequired = $scope.creditCheckRequired
             formObject.performMeterLookup = $scope.performMeterLookup
             formObject.cprCountry = $scope.cprCountry
             formObject.logic = $scope.logic
@@ -245,6 +246,7 @@ angular.module 'builder.controller', ['builder.provider']
                 maxRange: $scope.maxRange
                 nextXDays: $scope.nextXDays
                 performCreditCheck: $scope.performCreditCheck
+                creditCheckRequired: $scope.creditCheckRequired
                 performMeterLookup: $scope.performMeterLookup
                 cprCountry: $scope.cprCountry
                 logic: $scope.logic
@@ -277,6 +279,7 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.maxRange = @model.maxRange
             $scope.nextXDays = @model.nextXDays
             $scope.performCreditCheck = @model.performCreditCheck
+            $scope.creditCheckRequired = @model.creditCheckRequired
             $scope.performMeterLookup = @model.performMeterLookup
             $scope.cprCountry = @model.cprCountry
             $scope.logic = @model.logic
