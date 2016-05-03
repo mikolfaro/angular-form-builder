@@ -3,6 +3,7 @@
 
 # PyCharm
 .idea
+*.iml
 
 # node
 node_modules
