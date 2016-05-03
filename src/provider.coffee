@@ -73,6 +73,7 @@ angular.module 'builder.provider', []
             index: formObject.index ? 0
             label: formObject.label ? component.label
             description: formObject.description ? component.description
+            name: formObject.name ? component.name
             placeholder: formObject.placeholder ? component.placeholder
             options: formObject.options ? component.options
             required: formObject.required ? component.required

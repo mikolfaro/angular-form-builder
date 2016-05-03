@@ -32,6 +32,7 @@
       }
       if ($scope.formObject.id === void 0) {
         $scope.formObject.id = $builder.config.max_id;
+        $scope.formObject.name = "" + $scope.formObject.name + $scope.formObject.id;
         $builder.config.max_id = $builder.config.max_id + 1;
       }
       $scope.actions = ['Hide', 'Show'];
@@ -112,9 +113,10 @@
         var component;
         copyObjectToScope(formObject, $scope);
         $scope.optionsText = formObject.options.join('\n');
-        $scope.$watch('[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', function() {
+        $scope.$watch('[label, description, name, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', function() {
           formObject.label = $scope.label;
           formObject.description = $scope.description;
+          formObject.name = $scope.name;
           formObject.placeholder = $scope.placeholder;
           formObject.required = $scope.required;
           formObject.options = $scope.options;
@@ -168,6 +170,7 @@
           Backup input value.
            */
           return this.model = {
+            name: $scope.name,
             label: $scope.label,
             description: $scope.description,
             placeholder: $scope.placeholder,
@@ -205,6 +208,7 @@
           if (!this.model) {
             return;
           }
+          $scope.name = this.model.name;
           $scope.label = this.model.label;
           $scope.description = this.model.description;
           $scope.placeholder = this.model.placeholder;
@@ -1376,7 +1380,7 @@
       return result;
     };
     this.convertFormObject = function(name, formObject) {
-      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+      var component, result, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (formObject == null) {
         formObject = {};
       }
@@ -1391,31 +1395,32 @@
         index: (_ref1 = formObject.index) != null ? _ref1 : 0,
         label: (_ref2 = formObject.label) != null ? _ref2 : component.label,
         description: (_ref3 = formObject.description) != null ? _ref3 : component.description,
-        placeholder: (_ref4 = formObject.placeholder) != null ? _ref4 : component.placeholder,
-        options: (_ref5 = formObject.options) != null ? _ref5 : component.options,
-        required: (_ref6 = formObject.required) != null ? _ref6 : component.required,
-        validation: (_ref7 = formObject.validation) != null ? _ref7 : component.validation,
-        multiple: (_ref8 = formObject.multiple) != null ? _ref8 : component.multiple,
-        minLength: (_ref9 = formObject.minLength) != null ? _ref9 : component.minLength,
-        maxLength: (_ref10 = formObject.maxLength) != null ? _ref10 : component.maxLength,
-        dateRangeStart: (_ref11 = formObject.dateRangeStart) != null ? _ref11 : component.dateRangeStart,
-        dateRangeEnd: (_ref12 = formObject.dateRangeEnd) != null ? _ref12 : component.dateRangeEnd,
-        disableWeekends: (_ref13 = formObject.disableWeekends) != null ? _ref13 : component.disableWeekends,
-        readOnly: (_ref14 = formObject.readOnly) != null ? _ref14 : component.readOnly,
-        nextXDays: (_ref15 = formObject.nextXDays) != null ? _ref15 : component.nextXDays,
-        maxDate: (_ref16 = formObject.maxDate) != null ? _ref16 : component.maxDate,
-        requireConfirmation: (_ref17 = formObject.requireConfirmation) != null ? _ref17 : component.requireConfirmation,
-        minRange: (_ref18 = formObject.minRange) != null ? _ref18 : component.minRange,
-        maxRange: (_ref19 = formObject.maxRange) != null ? _ref19 : component.maxRange,
-        performCreditCheck: (_ref20 = formObject.performCreditCheck) != null ? _ref20 : component.performCreditCheck,
-        creditCheckRequired: (_ref21 = formObject.creditCheckRequired) != null ? _ref21 : component.creditCheckRequired,
-        performMeterLookup: (_ref22 = formObject.performMeterLookup) != null ? _ref22 : component.performMeterLookup,
-        cprCountry: (_ref23 = formObject.cprCountry) != null ? _ref23 : component.cprCountry,
-        logic: (_ref24 = formObject.logic) != null ? _ref24 : component.logic,
-        category: (_ref25 = formObject.category) != null ? _ref25 : component.category,
-        conversionType: (_ref26 = formObject.conversionType) != null ? _ref26 : component.conversionType,
-        searchScope: (_ref27 = formObject.searchScope) != null ? _ref27 : component.searchScope,
-        searchPeriod: (_ref28 = formObject.searchPeriod) != null ? _ref28 : component.searchPeriod
+        name: (_ref4 = formObject.name) != null ? _ref4 : component.name,
+        placeholder: (_ref5 = formObject.placeholder) != null ? _ref5 : component.placeholder,
+        options: (_ref6 = formObject.options) != null ? _ref6 : component.options,
+        required: (_ref7 = formObject.required) != null ? _ref7 : component.required,
+        validation: (_ref8 = formObject.validation) != null ? _ref8 : component.validation,
+        multiple: (_ref9 = formObject.multiple) != null ? _ref9 : component.multiple,
+        minLength: (_ref10 = formObject.minLength) != null ? _ref10 : component.minLength,
+        maxLength: (_ref11 = formObject.maxLength) != null ? _ref11 : component.maxLength,
+        dateRangeStart: (_ref12 = formObject.dateRangeStart) != null ? _ref12 : component.dateRangeStart,
+        dateRangeEnd: (_ref13 = formObject.dateRangeEnd) != null ? _ref13 : component.dateRangeEnd,
+        disableWeekends: (_ref14 = formObject.disableWeekends) != null ? _ref14 : component.disableWeekends,
+        readOnly: (_ref15 = formObject.readOnly) != null ? _ref15 : component.readOnly,
+        nextXDays: (_ref16 = formObject.nextXDays) != null ? _ref16 : component.nextXDays,
+        maxDate: (_ref17 = formObject.maxDate) != null ? _ref17 : component.maxDate,
+        requireConfirmation: (_ref18 = formObject.requireConfirmation) != null ? _ref18 : component.requireConfirmation,
+        minRange: (_ref19 = formObject.minRange) != null ? _ref19 : component.minRange,
+        maxRange: (_ref20 = formObject.maxRange) != null ? _ref20 : component.maxRange,
+        performCreditCheck: (_ref21 = formObject.performCreditCheck) != null ? _ref21 : component.performCreditCheck,
+        creditCheckRequired: (_ref22 = formObject.creditCheckRequired) != null ? _ref22 : component.creditCheckRequired,
+        performMeterLookup: (_ref23 = formObject.performMeterLookup) != null ? _ref23 : component.performMeterLookup,
+        cprCountry: (_ref24 = formObject.cprCountry) != null ? _ref24 : component.cprCountry,
+        logic: (_ref25 = formObject.logic) != null ? _ref25 : component.logic,
+        category: (_ref26 = formObject.category) != null ? _ref26 : component.category,
+        conversionType: (_ref27 = formObject.conversionType) != null ? _ref27 : component.conversionType,
+        searchScope: (_ref28 = formObject.searchScope) != null ? _ref28 : component.searchScope,
+        searchPeriod: (_ref29 = formObject.searchPeriod) != null ? _ref29 : component.searchPeriod
       };
       return result;
     };

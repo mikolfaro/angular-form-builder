@@ -125,6 +125,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <label class='control-label'>Description</label>
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
+                            <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
 
                             <div class='checkbox icheck-label'>
                               <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
@@ -169,7 +173,6 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                 </div>
             </form>
             """
-
 
     # ----------------------------------------
     # date picker
@@ -219,6 +222,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                             <div class="form-group">
                                 <label class='control-label'>Description</label>
                                 <input type='text' ng-model="description" class='form-control'/>
+                            </div>
+                            <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
                             </div>
                             <div class='checkbox icheck-label'>
                               <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
@@ -347,6 +354,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
                             <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class="form-group">
                                 <label class='control-label'>Placeholder</label>
                                 <input type='text' ng-model="placeholder" class='form-control'/>
                             </div>
@@ -460,6 +471,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
                             <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class="form-group">
                                 <label class='control-label'>Placeholder</label>
                                 <input type='text' ng-model="placeholder" class='form-control'/>
                             </div>
@@ -549,6 +564,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                             <div class="form-group">
                                 <label class='control-label'>Description</label>
                                 <input type='text' ng-model="description" class='form-control'/>
+                            </div>
+                            <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
                             </div>
                             <div class="form-group">
                                 <label class='control-label'>Options</label>
@@ -643,6 +662,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
                             <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class="form-group">
                                 <label class='control-label'>Options</label>
                                 <textarea class="form-control" rows="3" ng-model="optionsText"/>
                             </div>
@@ -735,6 +758,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                                 <input type='text' ng-model="description" class='form-control'/>
                             </div>
                             <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class="form-group">
                                 <label class='control-label'>Placeholder</label>
                                 <input type='text' ng-model="placeholder" class='form-control'/>
                             </div>
@@ -781,294 +808,302 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             </form>
             """
 
-        # ----------------------------------------
-        # Address field
-        # ----------------------------------------
-        $builderProvider.registerComponent 'address',
-            group: 'Advanced'
-            label: 'Address Field'
-            description: ''
-            required: no
-            readOnly: no
-            placeholder: {
-              StreetName: 'Street Name',
-              Number: 'Number',
-              Letter: 'Letter',
-              Floor: 'Floor',
-              PlaceName: 'Place Name',
-              PostCode: 'Post Code',
-              City: 'City'
-            }
-            options: []
-            template:
-                """
-                <div class="row" id="{{formName+index | nospace}}">
-                    <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}"><i ng-if ="formObject.logic.component" id="hasLogic" class="fa fa-random label-logic"></i> {{label}}</label>
-                    <div class="col-sm-10">
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.StreetName" class="form-control custom-m-b" placeholder="{{placeholder.StreetName}}"/>
-                        <input type="tel" ng-readonly="readOnly" ng-model="inputText.Number" class="form-control custom-m-b" placeholder="{{placeholder.Number}}"/>
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.Letter" class="form-control custom-m-b" placeholder="{{placeholder.Letter}}"/>
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.Floor" class="form-control custom-m-b" placeholder="{{placeholder.Floor}}"/>
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.PlaceName" class="form-control custom-m-b" placeholder="{{placeholder.PlaceName}}"/>
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.PostCode" class="form-control custom-m-b" placeholder="{{placeholder.PostCode}}"/>
-                        <input type="text" ng-readonly="readOnly" ng-model="inputText.City" class="form-control m-b" placeholder="{{placeholder.City}}" validator-required={{required}} validator-group={{formName}}/>
+    # ----------------------------------------
+    # Address field
+    # ----------------------------------------
+    $builderProvider.registerComponent 'address',
+        group: 'Advanced'
+        label: 'Address Field'
+        description: ''
+        required: no
+        readOnly: no
+        placeholder: {
+          StreetName: 'Street Name',
+          Number: 'Number',
+          Letter: 'Letter',
+          Floor: 'Floor',
+          PlaceName: 'Place Name',
+          PostCode: 'Post Code',
+          City: 'City'
+        }
+        options: []
+        template:
+            """
+            <div class="row" id="{{formName+index | nospace}}">
+                <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}"><i ng-if ="formObject.logic.component" id="hasLogic" class="fa fa-random label-logic"></i> {{label}}</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.StreetName" class="form-control custom-m-b" placeholder="{{placeholder.StreetName}}"/>
+                    <input type="tel" ng-readonly="readOnly" ng-model="inputText.Number" class="form-control custom-m-b" placeholder="{{placeholder.Number}}"/>
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.Letter" class="form-control custom-m-b" placeholder="{{placeholder.Letter}}"/>
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.Floor" class="form-control custom-m-b" placeholder="{{placeholder.Floor}}"/>
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.PlaceName" class="form-control custom-m-b" placeholder="{{placeholder.PlaceName}}"/>
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.PostCode" class="form-control custom-m-b" placeholder="{{placeholder.PostCode}}"/>
+                    <input type="text" ng-readonly="readOnly" ng-model="inputText.City" class="form-control m-b" placeholder="{{placeholder.City}}" validator-required={{required}} validator-group={{formName}}/>
+                </div>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
+                </div>
+            </div>
+            <div id="dashedline" class="hr-line-dashed"></div>
+            """
+        popoverTemplate:
+            """
+            <form>
+
+                <div role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
+                        <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
+                        <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
+                        <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
+                            <div class="form-group m-t-sm">
+                                <label class='control-label'>Label</label>
+                                <input type='text' ng-model="label" validator="[required]" class='form-control'/>
+                            </div>
+                            <div class="form-group">
+                                <label class='control-label'>Description</label>
+                                <input type='text' ng-model="description" class='form-control'/>
+                            </div>
+                            <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
+                              <label for="{{'readonly' + date + index}}">Read Only</label>
+                            </div>
+                            <div class="form-group">
+                            <label class='control-label'>Placeholders</label>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.StreetName" class="form-control custom-m-b"/>
+                            <input type="tel" ng-readonly="readOnly" ng-model="placeholder.Number" class="form-control custom-m-b"/>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.Letter" class="form-control custom-m-b"/>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.Floor" class="form-control custom-m-b"/>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.PlaceName" class="form-control custom-m-b"/>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.PostCode" class="form-control custom-m-b"/>
+                            <input type="text" ng-readonly="readOnly" ng-model="placeholder.City" class="form-control m-b"/>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="{{'required' + date + index}}" ng-model="required">
+                              <label for="{{'required' + date + index}}">Required</label>
+                            </div>
+                            <div class="form-group" ng-if="validationOptions.length > 0">
+                                <label class='control-label'>Validation</label>
+                                <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
+                            <div class="form-group m-t">
+                                <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
+                                <component-selector></component-selector>
+
+                                <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
+                                </select>
+                                <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
+                                <button type="button" ng-click="resetLogic()" class="btn btn-default pull-right">Reset</button>
+                                <br>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
+
+                </div>
+
+                <hr/>
+                <div class='form-group'>
+                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
+                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
+                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
+                </div>
+            </form>
+            """
+
+
+    # ----------------------------------------
+    # upload photo button
+    # ----------------------------------------
+    # $builderProvider.registerComponent 'upload',
+    #     group: 'Advanced'
+    #     label: 'Upload Photo'
+    #     description: ''
+    #     required: no
+    #     readOnly: no
+    #     template:
+    #         """
+    #         <div class="row" id="{{formName+index | nospace}}">
+    #             <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}">{{label}}</label>
+    #             <div class="col-sm-10">
+    #                 <div class="fileUpload btn btn-primary">
+    #                     <span>Upload</span>
+    #                     <input id="uploadBtn" ng-readonly="readOnly" type="file" class="m-b btn-upload btn-active" accept="image/*" capture="camera" upload-#   photo />
+    #                 </div>
+    #                 <input id="uploadFile" class="uploadLabel" ng-readonly="readOnly" placeholder="Choose File" disabled="disabled" />
+    #             </div>
+    #             <div class="col-sm-10 col-sm-offset-2">
+    #                 <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
+    #             </div>
+    #         </div>
+    #         <div id="dashedline" class="hr-line-dashed"></div>
+    #         """
+    #     popoverTemplate:
+    #         """
+    #         <form>
+    #
+    #             <div role="tabpanel">
+    #
+    #                 <!-- Nav tabs -->
+    #                 <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
+    #                     <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
+    #                     <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
+    #                     <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
+    #                 </ul>
+    #
+    #                 <!-- Tab panes -->
+    #                 <div class="tab-content">
+    #                     <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
+    #                         <div class="form-group">
+    #                             <label class='control-label'>Label</label>
+    #                             <input type='text' ng-model="label" validator="[required]" class='form-control'/>
+    #                         </div>
+    #                         <div class="form-group">
+    #                             <label class='control-label'>Description</label>
+    #                             <input type='text' ng-model="description" class='form-control'/>
+    #                         </div>
+    #                         <div class="checkbox">
+    #                             <label>
+    #                                 <input type='checkbox'  ng-model="readOnly" />
+    #                                 Read Only</label>
+    #                         </div>
+    #                     </div>
+    #                     <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
+    #                         <div class="checkbox">
+    #                             <label>
+    #                                 <input type='checkbox'  ng-model="required" />
+    #                                 Required</label>
+    #                         </div>
+    #                         <div class="form-group" ng-if="validationOptions.length > 0">
+    #                             <label class='control-label'>Validation</label>
+    #                             <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
+    #                         </div>
+    #                     </div>
+    #                     <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
+    #                         <div class="form-group m-t">
+    #                             <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
+    # <component-selector></component-selector>
+
+    #                             <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
+    #                             </select>
+    #                             <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
+    #                         </div>
+    #                     </div>
+    #                 </div>
+    #             </div>
+    #
+    #             <hr/>
+    #             <div class='form-group'>
+    #                 <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
+    #                 <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
+    #                 <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
+    #             </div>
+    #         </form>
+    #         """
+
+    # ----------------------------------------
+    # signature pad
+    # ----------------------------------------
+    $builderProvider.registerComponent 'signature',
+        group: 'Advanced'
+        label: 'Signature Pad'
+        decription: 'description'
+        required: no
+        readOnly: no
+        template:
+            """
+            <div class="row" id="{{formName+index | nospace}}">
+                <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}"><i ng-if ="formObject.logic.component" id="hasLogic" class="fa fa-random label-logic"></i> {{label}}</label>
+
+                <div class="col-sm-10">
+                    <div class="m-b">
+                        <signature-pad></signature-pad>
                     </div>
                 </div>
-                <div id="dashedline" class="hr-line-dashed"></div>
-                """
-            popoverTemplate:
-                """
-                <form>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
+                </div>
+            </div>
+            <div id="dashedline" class="hr-line-dashed"></div>
+            """
+        popoverTemplate:
+            """
+            <form>
 
-                    <div role="tabpanel">
+                <div role="tabpanel">
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
-                            <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
-                            <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
-                            <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
-                        </ul>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
+                        <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
+                        <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
+                        <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
+                    </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
-                                <div class="form-group m-t-sm">
-                                    <label class='control-label'>Label</label>
-                                    <input type='text' ng-model="label" validator="[required]" class='form-control'/>
-                                </div>
-                                <div class="form-group">
-                                    <label class='control-label'>Description</label>
-                                    <input type='text' ng-model="description" class='form-control'/>
-                                </div>
-                                <div class='checkbox icheck-label'>
-                                  <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
-                                  <label for="{{'readonly' + date + index}}">Read Only</label>
-                                </div>
-                                <div class="form-group">
-                                <label class='control-label'>Placeholders</label>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.StreetName" class="form-control custom-m-b"/>
-                                <input type="tel" ng-readonly="readOnly" ng-model="placeholder.Number" class="form-control custom-m-b"/>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.Letter" class="form-control custom-m-b"/>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.Floor" class="form-control custom-m-b"/>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.PlaceName" class="form-control custom-m-b"/>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.PostCode" class="form-control custom-m-b"/>
-                                <input type="text" ng-readonly="readOnly" ng-model="placeholder.City" class="form-control m-b"/>
-                                </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
+                            <div class="form-group m-t-sm">
+                                <label class='control-label'>Label</label>
+                                <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                                <div class='checkbox icheck-label m-t'>
-                                  <input type="checkbox" id="{{'required' + date + index}}" ng-model="required">
-                                  <label for="{{'required' + date + index}}">Required</label>
-                                </div>
-                                <div class="form-group" ng-if="validationOptions.length > 0">
-                                    <label class='control-label'>Validation</label>
-                                    <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
-                                </div>
+                            <div class="form-group">
+                                <label class='control-label'>Description</label>
+                                <input type='text' ng-model="description" class='form-control'/>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
-                                <div class="form-group m-t">
-                                    <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
-                                    <component-selector></component-selector>
-
-                                    <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
-                                    </select>
-                                    <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
-                                    <button type="button" ng-click="resetLogic()" class="btn btn-default pull-right">Reset</button>
-                                    <br>
-                                </div>
+                            <div class="form-group">
+                                <label class='control-label'>Name</label>
+                                <input type='text' ng-model="name" class='form-control'/>
+                            </div>
+                            <div class='checkbox icheck-label'>
+                              <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
+                              <label for="{{'readonly' + date + index}}">Read Only</label>
                             </div>
                         </div>
-
-                    </div>
-
-                    <hr/>
-                    <div class='form-group'>
-                        <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
-                        <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
-                        <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
-                    </div>
-                </form>
-                """
-
-
-            # ----------------------------------------
-            # upload photo button
-            # ----------------------------------------
-            # $builderProvider.registerComponent 'upload',
-            #     group: 'Advanced'
-            #     label: 'Upload Photo'
-            #     description: ''
-            #     required: no
-            #     readOnly: no
-            #     template:
-            #         """
-            #         <div class="row" id="{{formName+index | nospace}}">
-            #             <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}">{{label}}</label>
-            #             <div class="col-sm-10">
-            #                 <div class="fileUpload btn btn-primary">
-            #                     <span>Upload</span>
-            #                     <input id="uploadBtn" ng-readonly="readOnly" type="file" class="m-b btn-upload btn-active" accept="image/*" capture="camera" upload-#   photo />
-            #                 </div>
-            #                 <input id="uploadFile" class="uploadLabel" ng-readonly="readOnly" placeholder="Choose File" disabled="disabled" />
-            #             </div>
-            #             <div class="col-sm-10 col-sm-offset-2">
-            #                 <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
-            #             </div>
-            #         </div>
-            #         <div id="dashedline" class="hr-line-dashed"></div>
-            #         """
-            #     popoverTemplate:
-            #         """
-            #         <form>
-            #
-            #             <div role="tabpanel">
-            #
-            #                 <!-- Nav tabs -->
-            #                 <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
-            #                     <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
-            #                     <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
-            #                     <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
-            #                 </ul>
-            #
-            #                 <!-- Tab panes -->
-            #                 <div class="tab-content">
-            #                     <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
-            #                         <div class="form-group">
-            #                             <label class='control-label'>Label</label>
-            #                             <input type='text' ng-model="label" validator="[required]" class='form-control'/>
-            #                         </div>
-            #                         <div class="form-group">
-            #                             <label class='control-label'>Description</label>
-            #                             <input type='text' ng-model="description" class='form-control'/>
-            #                         </div>
-            #                         <div class="checkbox">
-            #                             <label>
-            #                                 <input type='checkbox'  ng-model="readOnly" />
-            #                                 Read Only</label>
-            #                         </div>
-            #                     </div>
-            #                     <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-            #                         <div class="checkbox">
-            #                             <label>
-            #                                 <input type='checkbox'  ng-model="required" />
-            #                                 Required</label>
-            #                         </div>
-            #                         <div class="form-group" ng-if="validationOptions.length > 0">
-            #                             <label class='control-label'>Validation</label>
-            #                             <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
-            #                         </div>
-            #                     </div>
-            #                     <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
-            #                         <div class="form-group m-t">
-            #                             <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
-            # <component-selector></component-selector>
-
-            #                             <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
-            #                             </select>
-            #                             <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
-            #                         </div>
-            #                     </div>
-            #                 </div>
-            #             </div>
-            #
-            #             <hr/>
-            #             <div class='form-group'>
-            #                 <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
-            #                 <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
-            #                 <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
-            #             </div>
-            #         </form>
-            #         """
-
-            # ----------------------------------------
-            # signature pad
-            # ----------------------------------------
-            $builderProvider.registerComponent 'signature',
-                group: 'Advanced'
-                label: 'Signature Pad'
-                decription: 'description'
-                required: no
-                readOnly: no
-                template:
-                    """
-                    <div class="row" id="{{formName+index | nospace}}">
-                        <label class="col-sm-2 control-label" for="{{formName+index}}" ng-class="{'fb-required':required}"><i ng-if ="formObject.logic.component" id="hasLogic" class="fa fa-random label-logic"></i> {{label}}</label>
-
-                        <div class="col-sm-10">
-                            <div class="m-b">
-                                <signature-pad></signature-pad>
+                        <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
+                            <div class='checkbox icheck-label m-t'>
+                              <input type="checkbox" id="{{'required' + date + index}}" ng-model="required">
+                              <label for="{{'required' + date + index}}">Required</label>
                             </div>
                         </div>
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <small ng-show="description" class="help-block text-muted custom-small">{{description}}</small>
+                        <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
+                            <div class="form-group m-t">
+                                <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
+                                <component-selector></component-selector>
+
+                                <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
+                                </select>
+                                <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
+                                <button type="button" ng-click="resetLogic()" class="btn btn-default pull-right">Reset</button>
+                                <br>
+                            </div>
                         </div>
                     </div>
-                    <div id="dashedline" class="hr-line-dashed"></div>
-                    """
-                popoverTemplate:
-                    """
-                    <form>
+                </div>
 
-                        <div role="tabpanel">
+                <div class="form-group" ng-if="validationOptions.length > 0">
+                    <label class='control-label'>Validation</label>
+                    <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
+                </div>
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-justified nav-tabs" role="tablist" style="margin-left:-10px">
-                                <li role="presentation" class="active"><a href="{{'#properties' + date + index}}" aria-controls="{{'properties' + date + index}}" role="tab" data-toggle="tab">Properties</a></li>
-                                <li role="presentation"><a href="{{'#validations' + date + index}}" aria-controls="{{'validations' + date + index}}" role="tab" data-toggle="tab">Validations</a></li>
-                                <li role="presentation"><a href="{{'#logic' + date + index}}" aria-controls="{{'logic' + date + index}}" role="tab" data-toggle="tab">Logic</a></li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="{{'properties' + date + index}}">
-                                    <div class="form-group m-t-sm">
-                                        <label class='control-label'>Label</label>
-                                        <input type='text' ng-model="label" validator="[required]" class='form-control'/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class='control-label'>Description</label>
-                                        <input type='text' ng-model="description" class='form-control'/>
-                                    </div>
-                                    <div class='checkbox icheck-label'>
-                                      <input type="checkbox" id="{{'readonly' + date + index}}" ng-model="readOnly">
-                                      <label for="{{'readonly' + date + index}}">Read Only</label>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="{{'validations' + date + index}}">
-                                    <div class='checkbox icheck-label m-t'>
-                                      <input type="checkbox" id="{{'required' + date + index}}" ng-model="required">
-                                      <label for="{{'required' + date + index}}">Required</label>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="{{'logic' + date + index}}">
-                                    <div class="form-group m-t">
-                                        <select class="form-control custom-m-b" ng-model="formObject.logic.action" ng-options="action for action in actions"></select><p> this element if</p>
-                                        <component-selector></component-selector>
-
-                                        <select class="form-control custom-m-b" ng-model="formObject.logic.comparator" ng-options="comparator for comparator in comparatorChoices">
-                                        </select>
-                                        <input type="text" ng-model="formObject.logic.value" class="form-control" placeholder="Value">
-                                        <button type="button" ng-click="resetLogic()" class="btn btn-default pull-right">Reset</button>
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group" ng-if="validationOptions.length > 0">
-                            <label class='control-label'>Validation</label>
-                            <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
-                        </div>
-
-                        <hr/>
-                        <div class='form-group'>
-                            <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
-                            <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
-                            <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
-                        </div>
-                    </form>
-                    """
+                <hr/>
+                <div class='form-group'>
+                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger fa h-c-34 pull-right m-b m-l-xs' value='&#xf1f8'/>
+                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary h-c-34 pull-right m-b fa' value='&#xf0c7'/>
+                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-white h-c-34 pull-left m-b' value='Cancel'/>
+                </div>
+            </form>
+            """
 ]

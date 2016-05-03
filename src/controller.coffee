@@ -35,6 +35,7 @@ angular.module 'builder.controller', ['builder.provider']
     # initialize formObject id
     if $scope.formObject.id is undefined
       $scope.formObject.id = $builder.config.max_id
+      $scope.formObject.name = "#{$scope.formObject.name}#{$scope.formObject.id}"
       $builder.config.max_id = $builder.config.max_id + 1
 
     $scope.actions = ['Hide', 'Show']
@@ -130,9 +131,10 @@ angular.module 'builder.controller', ['builder.provider']
 
         $scope.optionsText = formObject.options.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', ->
+        $scope.$watch '[label, description, name, placeholder, required, options, validation, multiple, minLength, maxLength, dateRangeStart, dateRangeEnd, disableWeekends, maxDate, requireConfirmation, readOnly, minRange, maxRange, nextXDays, performCreditCheck, creditCheckRequired, performMeterLookup, cprCountry, logic, category, conversionType, searchScope, searchPeriod]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
+            formObject.name = $scope.name
             formObject.placeholder = $scope.placeholder
             formObject.required = $scope.required
             formObject.options = $scope.options
@@ -175,6 +177,7 @@ angular.module 'builder.controller', ['builder.provider']
             Backup input value.
             ###
             @model =
+                name: $scope.name
                 label: $scope.label
                 description: $scope.description
                 placeholder: $scope.placeholder
@@ -207,6 +210,7 @@ angular.module 'builder.controller', ['builder.provider']
             Rollback input value.
             ###
             return if not @model
+            $scope.name = @model.name
             $scope.label = @model.label
             $scope.description = @model.description
             $scope.placeholder = @model.placeholder
